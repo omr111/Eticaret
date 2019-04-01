@@ -1,0 +1,22 @@
+﻿@model ETicaret.MVCUI.Models.ProductAndReviews
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--================Single Product Area =================-->
+@Html.Partial("_ProductDetail", Model.Product)
+<!--================End Single Product Area =================-->
+<!--================Product Description Area =================-->
+        
+            @Html.Partial("_ProductDescription", Model)
+          
+      
+
+
+
+<!--================End Product Description Area =================-->
+<!-- Start related-product Area -->
+<!--todo haftanın ürünlerine model gönderilip, haftanın ürünleri seçilip listelenecek-->
+@Html.Partial("_DealsOfTheWeekProducts")
+<!-- End related-product Area -->
+<!-- start footer Area -->

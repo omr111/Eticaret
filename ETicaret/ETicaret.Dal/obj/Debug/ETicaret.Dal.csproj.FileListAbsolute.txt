@@ -1,0 +1,50 @@
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\bin\Debug\ETicaret.Dal.dll.config
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\bin\Debug\ETicaret.Dal.dll
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\bin\Debug\ETicaret.Dal.pdb
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\bin\Debug\EntityFramework.dll
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\bin\Debug\ETicaret.Entities.dll
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\bin\Debug\ETicaret.Entities.pdb
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\bin\Debug\EntityFramework.xml
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\obj\Debug\ETicaret.Dal.csprojResolveAssemblyReference.cache
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\obj\Debug\ETicaret.Dal.dll
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\obj\Debug\ETicaret.Dal.pdb
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\bin\Debug\System.Web.Helpers.dll
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\bin\Debug\System.Web.Mvc.dll
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\bin\Debug\System.Web.Razor.dll
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\bin\Debug\System.Web.WebPages.dll
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\bin\Debug\System.Web.Helpers.xml
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\bin\Debug\System.Web.Mvc.xml
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\bin\Debug\System.Web.Razor.xml
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\bin\Debug\System.Web.WebPages.xml
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\ömer\Documents\Visual Studio 2013\Projects\ETicaret\ETicaret.Dal\bin\Debug\System.Web.WebPages.Razor.xml
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\bin\Debug\ETicaret.Dal.dll.config
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\bin\Debug\ETicaret.Dal.dll
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\bin\Debug\ETicaret.Dal.pdb
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\bin\Debug\EntityFramework.dll
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\bin\Debug\EntityFramework.SqlServer.dll
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\bin\Debug\ETicaret.Entities.dll
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\bin\Debug\System.Web.Helpers.dll
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\bin\Debug\System.Web.Mvc.dll
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\bin\Debug\System.Web.Razor.dll
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\bin\Debug\System.Web.WebPages.dll
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\bin\Debug\System.Web.WebPages.Razor.dll
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\bin\Debug\ETicaret.Entities.pdb
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\bin\Debug\EntityFramework.xml
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\bin\Debug\EntityFramework.SqlServer.xml
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\bin\Debug\System.Web.Helpers.xml
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\bin\Debug\System.Web.Mvc.xml
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\bin\Debug\System.Web.Razor.xml
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\bin\Debug\System.Web.WebPages.xml
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\bin\Debug\System.Web.WebPages.Razor.xml
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\obj\Debug\ETicaret.Dal.csprojResolveAssemblyReference.cache
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\obj\Debug\ETicaret.Dal.dll
+D:\omr111-GitHub\ETicaret\ETicaret\ETicaret.Dal\obj\Debug\ETicaret.Dal.pdb
