@@ -183,6 +183,14 @@ namespace ETicaret.MVCUI.Controllers
                 {
 
                     isValidProduct.ModifiedDate = DateTime.Now;
+                    isValidProduct.Caption = pro.Caption;
+                    isValidProduct.ProductBrandID = pro.ProductBrandID;
+                    isValidProduct.Category_Id = pro.Category_Id;
+                    ViewBag.kayitEdilen = pro.Id;
+                    isValidProduct.Description = pro.Description;
+                    isValidProduct.Name = pro.Name;
+                    isValidProduct.Price = pro.Price;
+                    
 
 
                     _productBll.Update(isValidProduct);
