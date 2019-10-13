@@ -1229,6 +1229,7 @@ h1, h2, h3, h4, h5, h6 {
     .banner-area .active-banner-slider .owl-nav .owl-next {
       display: inline-block;
       margin: 10px;
+        margin-bottom: 80px;
       opacity: .5;
       -webkit-transition: all 0.3s ease 0s;
       -moz-transition: all 0.3s ease 0s;
@@ -1891,9 +1892,14 @@ h1, h2, h3, h4, h5, h6 {
     background-position: center center !important;
     height: 600px;
     display: block; }
+.owl-controls {
+    margin-bottom: 50px !important;
+    background-color: #000000 !important;
+}
   .quick-view-carousel-details .owl-controls {
     position: absolute;
     bottom: 20px;
+      
     right: 20px; }
     .quick-view-carousel-details .owl-controls .owl-dots .owl-dot {
       width: 60px;

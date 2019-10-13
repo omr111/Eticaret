@@ -17,7 +17,7 @@ namespace ETicaret.Bll.Concrete
             _productDal = productDal;
         }
 
-        public List<Product> ListThem(Expression<Func<Product,bool>>filter)
+        public List<Product> ListThem(Expression<Func<Product,bool>>filter=null)
         {
             List<Product> products = _productDal.ListThem();
             return products;

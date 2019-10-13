@@ -121,7 +121,11 @@ ul ol {
 dt {
   font-weight: 700;
 }
-
+#latestProductPages {
+    margin-top: 30px !important;
+    padding-top: 30px !important;
+    background-color: #000000 !important;
+}
 dd {
   margin-bottom: .5rem;
   margin-left: 0;
