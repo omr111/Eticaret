@@ -1,0 +1,47 @@
+﻿@using System.Web.Mvc.Html
+@model ETicaret.Entities.Models.Product
+<div class="col-lg-6">
+    <div class="review_box">
+        <h4>Yorum Yaz</h4>
+        <form class="row contact_form" action="/Product/AddComment" method="post" id="contactForm" novalidate="novalidate">
+           
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.Hidden("Product_Id",Model.Id)
+                </div>
+            </div>
+            <div class="col-md-12 uyariEkle">
+                <div class="form-group">
+                    <textarea class="form-control yorum" name="text" id="message" rows="1" placeholder="Message"></textarea>
+                </div>
+            </div>
+           @if (Session["Login"] == null)
+           {
+               <div class="col-md-12 text-right">
+                   <a href="/Account/Login" class="btn primary-btn commentControl">Giriş Yap</a>
+               </div>
+           }
+           else
+           {
+               <div class="col-md-12 text-right">
+                   <button type="submit" value="submit" class="btn primary-btn">Yorum Yap</button>
+               </div>
+           }
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    $(".commentControl").click(function() {
+        var veri = $(".yorum").name;
+        $.ajax({
+            url: "/Product/AddComment",
+            data: { text: veri },
+            failed:function(veri) {
+                if (veri.trim=='') {
+                    $(".uyariEkle").append("<h4>Yorum Satırı Boş Geçilemez!</h4>");
+                }
+            }
+        });
+    })
+
+</script>

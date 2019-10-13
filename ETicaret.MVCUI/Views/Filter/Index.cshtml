@@ -1,0 +1,143 @@
+﻿@using ETicaret.Entities.Models
+@using PagedList.Mvc
+@model ETicaret.MVCUI.Models.FilterPage
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Banner-->
+<section class="banner-area organic-breadcrumb" style="margin-bottom: 50px;">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Shop Category page</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="#">Shop<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="category.html">Fashon Category</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Banner bitti-->
+<div class="container">
+<div class="row">
+    <div class="col-xl-3 col-lg-4 col-md-5">
+        <div class="sidebar-categories">
+            @Html.Partial("_SidebarCategories",Model)
+        </div>
+        <div class="sidebar-filter mt-50">
+            <div class="top-filter-head">Product Filters</div>
+            <div class="common-filter BrandFilter">
+                @Html.Partial("_BrandFilter", Model)
+            </div>
+                
+            <div class="common-filter priceFilter">
+                @Html.Partial("_PriceFilter",Model)
+            </div>
+               
+        </div>
+    </div>
+        <div class="col-xl-9 col-lg-8 col-md-7">
+            <!-- Start Filter Bar -->
+            <div class="filter-bar d-flex flex-wrap align-items-center">
+                <!--ÜRÜN ARAMA AJAX İLE YAPILDI-->
+                <div class="sorting">
+                    <select class="filtrelemeSec" name="filter" onchange="myfunc()">
+                        <option value="1"> Uzundan Pahalıya </option>
+                        <option value="2">Pahalıdan Ucuza</option>
+                        <option value="3">En Yeni Ürünler</option>
+                    </select>
+
+                </div>
+            </div>
+            <section class="lattest-product-area pb-40 category-list">
+                <div class="row sortAppend" id="filtered">
+                    <!-- single product -->
+                    @Html.Partial("_Filter",Model)
+                   
+                </div>
+            </section>
+            <div class="filter-bar d-flex flex-wrap align-items-center">
+
+                @Html.PagedListPager(Model.Products,page=>Url.Action("Index",new RouteValueDictionary
+                {
+                    {"pageNo",page},
+                    {"searchh",ViewBag.istek}
+                }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions { UpdateTargetId = "filtered" }))
+
+
+            </div>
+            <!-- End Filter Bar -->
+        </div>
+      
+    </div>
+</div>
+
+<script src="~/Content/js/vendor/jquery-2.2.4.min.js"></script>
+
+<script type="text/javascript">
+
+
+    function myfunc() {
+        /**
+         ViewBag'i tek tırnaklar arasına almazsam int bir değer girip aradığımda sıralama işlemi çalışıyor ama
+         string girdiğimde çalışmıyor. Girilen değerin string olduğunu belirttim kısacası.
+         */
+        var a = '@ViewBag.istek';
+        var low = $("#lower-value").html();
+        var up = $("#upper-value").html();
+        var secilen = $(".filtrelemeSec").find(":checked").val();
+
+        $.ajax({
+            url: "/Filter/Index",
+            data: { searchh: a, filter: secilen,down:low,up:up },
+
+            success: function (veri) {
+
+                $(".sortAppend").html(veri);
+
+            },
+            error: function () { alert("Filtereleme Sırasında Bir Hata Oluştu !"); }
+        });
+    };
+
+    @*fiyat filtre-->*@
+    $(".priceSet").click(function () {
+
+        var low = $("#lower-value").html();
+        var up = $("#upper-value").html();
+        var search = '@ViewBag.istek';
+        $.ajax({
+            url: "/Filter/Index",
+            data: { searchh: search, down: low, up: up },
+            success: function (veri) {
+                $(".sortAppend").html(veri);
+            }
+
+        });
+
+        //BrandFilter'a gönder
+
+        $.ajax({
+            url: "/Filter/BrandList",
+            data: { search: search, down: low, up: up },
+            success: function (veri) {
+                $(".BrandFilter").html(veri);
+            }
+
+        });
+
+
+    });
+</script>
+
+
+
+
+
+
+
+
+

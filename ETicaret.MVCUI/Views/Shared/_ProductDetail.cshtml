@@ -1,0 +1,59 @@
+﻿@model ETicaret.Entities.Models.Product
+<div class="product_image_area">
+    <div class="container">
+        <div class="row s_product_inner">
+            <div class="col-lg-6">
+                <div class="s_Product_carousel">
+                    <div class="single-prd-item">
+                        <img class="img-fluid" src="/Content/img/category/s-p1.jpg" alt="">
+                    </div>
+                    <div class="single-prd-item">
+                        <img class="img-fluid" src="/Content/img/category/s-p1.jpg" alt="">
+                    </div>
+                    <div class="single-prd-item">
+                        <img class="img-fluid" src="/Content/img/category/s-p1.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 offset-lg-1">
+                <div class="s_product_text">
+                    <h3>@Model.Name</h3>
+                    <h2>@Model.Price</h2>
+                    <ul class="list">
+                        <li><a class="active" href="#"><span>Kategori:</span> : @Model.Category.Name</a></li>
+                        @if (Model.IsContinued)
+                        {
+                            <li><span> Stok Durumu: </span> : &nbsp;&nbsp;&nbsp;Stokta Var</li>
+                        }
+                        else
+                        {
+                            <li> <span> Stok Durumu: </span> &nbsp;&nbsp;&nbsp;Stokta Yok</li>
+                        }
+
+
+                    </ul>
+                    <p>
+                        @Model.Caption
+                    </p>
+                    <div class="product_count">
+                        <label for="qty">Miktar:</label>
+                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                class="increase items-count" type="button">
+                            <i class="lnr lnr-chevron-up"></i>
+                        </button>
+                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;"
+                                class="reduced items-count" type="button">
+                            <i class="lnr lnr-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="card_area d-flex align-items-center">
+                        <a class="primary-btn" href="#">Sepete Ekle</a>
+                        <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
+                        <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

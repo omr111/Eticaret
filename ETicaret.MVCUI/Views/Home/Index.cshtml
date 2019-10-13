@@ -1,0 +1,21 @@
+﻿@using System.Web.Mvc.Html
+@using PagedList.Mvc
+@model ETicaret.MVCUI.Models.HomeIndexKarmaModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@Html.Partial("_Banner")
+@Html.Partial("_featuresArea")
+@Html.Partial("_CategoryArea", Model)
+<section class="owl-carousel active-product-area section_gap ">
+    @Html.Partial("_LatestProduct", Model)
+</section>
+
+    
+
+    @Html.Partial("_ExclusiveProduct")
+    @Html.Partial("_Brands")
+
+    @Html.Partial("_DealsOfTheWeekProducts")

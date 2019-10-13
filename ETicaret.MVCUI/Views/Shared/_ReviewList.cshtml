@@ -1,0 +1,25 @@
+﻿@model List<ETicaret.Entities.Models.ProductReview>
+
+    @foreach (var pro in Model)
+    {
+        <div class="review_item dataAl"data-proid="@pro.productId">
+            <div class="media">
+                <div class="d-flex">
+                    <img src="/Content/img/product/review-1.png" alt="">
+                </div>
+                <div class="media-body ekle">
+                    <h4>@pro.Member.Name @pro.Member.Surname</h4>
+                    @for (int i = 0; i < @pro.YildizSayisi; i++)
+                    {
+                        <i class="fa fa-star"></i>
+                    }
+                    @for (int i = 0; i < 5 - @pro.YildizSayisi; i++)
+                    {
+                        <i class="fa fa-star-o"></i>
+                    }
+                </div>
+            </div>
+            <p>@pro.text</p>
+        </div>
+    }
+

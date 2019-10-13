@@ -1,0 +1,16 @@
+﻿@using System.Collections
+@using ETicaret.Entities.Models
+@model ETicaret.MVCUI.Models.FilterPage
+
+
+    <div class="head">Brands</div>
+    <form action="#">
+        <ul>
+            @foreach (var brand in Model.BrandsOfProduct)
+            {
+                <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">@brand.brandName<span>(@brand.stok)</span></label></li>
+            }
+
+        </ul>
+    </form>
+
