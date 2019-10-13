@@ -167,6 +167,7 @@ namespace ETicaret.MVCUI.Controllers
             try
             {
                 Product isValidProduct=_productBll.GetOne(x => x.Id == pro.Id);
+                
                 if (isValidProduct==null)
                 {
                     pro.AddedDate = DateTime.Now;
@@ -177,10 +178,14 @@ namespace ETicaret.MVCUI.Controllers
                     ViewBag.kayitEdilen = pro.Id;
                     
                 }
-                //todo id 0 geldiği için update'e girmiyor!!
+               
                 else
                 {
-                    _productBll.Update(pro);
+
+                    isValidProduct.ModifiedDate = DateTime.Now;
+
+
+                    _productBll.Update(isValidProduct);
                 }
                 
                 

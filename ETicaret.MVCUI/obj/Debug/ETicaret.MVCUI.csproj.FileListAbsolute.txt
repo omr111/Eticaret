@@ -29,3 +29,4 @@ D:\omr111-GitHub\ETicaret\ETicaret.MVCUI\bin\System.Web.WebPages.Deployment.xml
 D:\omr111-GitHub\ETicaret\ETicaret.MVCUI\bin\System.Web.WebPages.Razor.xml
 D:\omr111-GitHub\ETicaret\ETicaret.MVCUI\obj\Debug\ETicaret.MVCUI.dll
 D:\omr111-GitHub\ETicaret\ETicaret.MVCUI\obj\Debug\ETicaret.MVCUI.pdb
+D:\omr111-GitHub\ETicaret\ETicaret.MVCUI\obj\Debug\ETicaret.MVCUI.csprojResolveAssemblyReference.cache

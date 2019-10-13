@@ -1,50 +1,51 @@
 ﻿@model ETicaret.MVCUI.Models.AddProductModel
 <h2>Sign up to great new account </h2>
 <form method="post" action="/Product/AddProduct" id="form" class="form">
-    <h3>
-        <span class="title_text">Ürün Detayı</span>
-    </h3>
-    <fieldset>
-        <div class="fieldset-content" style="overflow-y: scroll">
-            <div class="form-group">
-                <label for="username" class="form-label">Başlık</label>
-                <input type="text" class="Name" name="Name" id="username" maxlength="50" placeholder="Ürün Başlık" />
-            </div>
-            <div class="form-group">
-                <label for="email" class="form-label">Ürün Bilgi</label>
-                <textarea rows="5" class="Caption" name="Caption" maxlength="75" placeholder="Ürün Bilgi"></textarea>
-            </div>
-            <div class="form-group form-password">
-                <label for="password" class="form-label">Ürün Açıklama</label>
-                <textarea rows="10" class="Description" name="Description" placeholder="Ürün Detayı"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="email" class="form-label">Fiyat Belirle</label>
-                <input type="number" class="price" name="price" placeholder="Kdv'li Fiyat" />
-            </div>
-            <div class="form-select">
-                <label for="country" class="form-label">Marka Seçimi</label>
-                <select class="ProductBrandID" name="ProductBrandID" id="country">
-                    @foreach (var brand in Model.Brands)
-                    {
-                        <option value="@brand.id">@brand.name</option>
-                    }
-                </select>
-            </div>
-            <div class="form-select">
-                <label for="country" class="form-label">Kategori Seçimi</label>
-                <select class="Category_Id" name="Category_Id" id="country">
-                    @foreach (var cat in Model.Categories)
-                    {
+    
+        <h3>
+            <span class="title_text">Ürün Detayı</span>
+        </h3>
+        <fieldset>
+            <div class="fieldset-content" style="overflow-y: scroll">
+                <div class="form-group">
+                    <label for="username" class="form-label">Başlık</label>
+                    <input type="text" class="Name" name="Name" id="username" maxlength="50" placeholder="Ürün Başlık" />
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">Ürün Bilgi</label>
+                    <textarea rows="5" class="Caption" name="Caption" maxlength="75" placeholder="Ürün Bilgi"></textarea>
+                </div>
+                <div class="form-group form-password">
+                    <label for="password" class="form-label">Ürün Açıklama</label>
+                    <textarea rows="10" class="Description" name="Description" placeholder="Ürün Detayı"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">Fiyat Belirle</label>
+                    <input type="number" class="price" name="price" placeholder="Kdv'li Fiyat" />
+                </div>
+                <div class="form-select">
+                    <label for="country" class="form-label">Marka Seçimi</label>
+                    <select class="ProductBrandID" name="ProductBrandID" id="country">
+                        @foreach (var brand in Model.Brands)
+                        {
+                            <option value="@brand.id">@brand.name</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-select">
+                    <label for="country" class="form-label">Kategori Seçimi</label>
+                    <select class="Category_Id" name="Category_Id" id="country">
+                        @foreach (var cat in Model.Categories)
+                        {
 
-                        <option value="@cat.Id">@cat.Name</option>
+                            <option value="@cat.Id">@cat.Name</option>
 
 
-                    }
-                </select>
-            </div>
+                        }
+                    </select>
+                </div>
 
-            @*<div class="form-group">
+                @*<div class="form-group">
                     <label for="your_avatar" class="form-label">Ürün Kapak Resim</label>
                     <div class="form-file">
                         <input type="file" name="CoverPicture" id="your_avatar" class="custom-file-input" />
@@ -52,12 +53,13 @@
                         <span id='button'>Resim Seç</span>
                     </div>
                 </div>*@
-        </div>
-        <div class="fieldset-footer">
-            <span>Adım 1 / 3</span>
-            <button style="background: #1abc9c; color: #fff0f5; height: 50px; float: right; margin-top: -15px;" type="submit" class="formGonder">Kayıt et ve Devam Et</button>
-        </div>
-    </fieldset>
+            </div>
+            <div class="fieldset-footer">
+                <span>Adım 1 / 3</span>
+                <button style="background: #1abc9c; color: #fff0f5; height: 50px; float: right; margin-top: -15px;" type="submit" class="formGonder">Kayıt et ve Devam Et</button>
+            </div>
+        </fieldset>
+   
     <!--ProductOptions-->
     <!--image-->
 </form>

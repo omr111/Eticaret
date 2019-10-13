@@ -25,13 +25,15 @@
 
     <div class="main">
 
-        <div class="container DetayGizle signup-form">
-            @Html.Partial("_AddProductWizard",Model)
+       
+            <div class="DetayGizle signup-form " >
+                @Html.Partial("_AddProductWizard",Model)
+            </div>
+            <div class="ozellikGizle signup-form" data-id=@ViewBag.kayitEdilen style="visibility: hidden">
+                @Html.Partial("_AddProductOptions")
+            </div>
         </div>
-        <div class="container ozellikGizle signup-form" data-id="" style="visibility: hidden">
-            @Html.Partial("_AddProductOptions")
-        </div>
-    </div>
+ 
 
 
      JS 
@@ -50,7 +52,7 @@
 
 
 <script>
-    var proId = @Convert.ToInt32(ViewBag.kayitEdilenId);
+    var proId = @Convert.ToInt32(ViewBag.kayitEdilen);
     $(".newOption").click(function () {
         var html = ' <div class="form-group" style="clear: both; float: left !important">';
         html += '<label for="full_name" class="form-label">Özellik Tip</label>';
@@ -87,18 +89,19 @@
         $(document).ready(function() {
             $('form').submit(function (event) {
                 event.preventDefault();
-      
+                var id = $(".ozellikGizle").data("id");
                 var price = document.getElementsByClassName("price")[0].value;
                 var Name = document.getElementsByClassName("Name")[0].value;
                 var Caption = document.getElementsByClassName("Caption")[0].value;
                 var Description = document.getElementsByClassName("Description")[0].value;
                 var ProductBrandID = document.getElementsByClassName("ProductBrandID")[0].value;
                 var Category_Id = document.getElementsByClassName("Category_Id")[0].value;
-           
+
                 $.ajax({
                     url: this.action,
                     type: this.method,
                     data: {
+                        id:id,
                         Name: Name,
                         Caption: Caption,
                         Description: Description,
