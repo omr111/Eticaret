@@ -28,24 +28,42 @@ namespace ETicaret.Bll.Concrete
             return _categoryDal.GetOne(filter);
         }
 
-        public void Update(Category category)
+        public bool Update(Category category)
         {
-            _categoryDal.Update(category);
+            bool result = _categoryDal.Update(category);
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             var deleteObject = _categoryDal.GetOne(x => x.Id == id);
             if (deleteObject!=null)
             {
-                _categoryDal.Delete(deleteObject);
+                bool result = _categoryDal.Delete(deleteObject);
+                if (result)
+                {
+                    return true;
+                }
+
+                return false;
             }
-            
+            return false;
         }
 
-        public void Add(Category category)
+        public bool Add(Category category)
         {
-            _categoryDal.Add(category);
+           bool result= _categoryDal.Add(category);
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public List<Category> ListAccordingToParentID()

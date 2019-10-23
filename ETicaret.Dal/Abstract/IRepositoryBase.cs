@@ -8,8 +8,8 @@ namespace ETicaret.Dal.Abstract
     {
         List<T> ListThem(Expression<Func<T, bool>> filter = null);
         T GetOne(Expression<Func<T, bool>> filter=null);
-        void Update(T entity);
-        void Delete(T entity);
-        void Add(T entity);
+        bool Update(T entity);
+        bool Delete(T entity);
+        bool Add(T entity);
     }
 }

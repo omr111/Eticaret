@@ -9,9 +9,9 @@ namespace ETicaret.Bll.Abstract
     {
         List<Product> ListThem(Expression<Func<Product, bool>> filter=null);
         Product GetOne(Expression<Func<Product, bool>> filter);
-        void Update(Product product);
-        void Delete(int id);
-        void Add(Product product);
+        bool Update(Product product);
+        bool Delete(int id);
+        bool Add(Product product);
         List<Product> ListAccordingToCategory(int? id);
 
         List<Product> FilterProduct(string id);

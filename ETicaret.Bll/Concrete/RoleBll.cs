@@ -27,24 +27,42 @@ namespace ETicaret.Bll.Concrete
             return _roleDal.GetOne(filter);
         }
 
-        public void Update(Role role)
+        public bool Update(Role role)
         {
-            _roleDal.Update(role);
+            bool result = _roleDal.Update(role);
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             var deleteObject = _roleDal.GetOne(x => x.id == id);
             if (deleteObject!=null)
             {
-                _roleDal.Delete(deleteObject);
+                bool result = _roleDal.Delete(deleteObject);
+                if (result)
+                {
+                    return true;
+                }
+
+                return false;
             }
-            
+            return false;
         }
 
-        public void Add(Role role)
+        public bool Add(Role role)
         {
-            _roleDal.Add(role);
+            bool result = _roleDal.Add(role);
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -9,9 +9,9 @@ namespace ETicaret.Bll.Abstract
     {
         List<ProductReview> ListThem(Expression<Func<ProductReview, bool>> filter = null);
         ProductReview GetOne(Expression<Func<ProductReview, bool>> filter);
-        void Update(ProductReview productReview);
-        void Delete(int id);
-        void Add(ProductReview productReview);
+        bool Update(ProductReview productReview);
+        bool Delete(int id);
+        bool Add(ProductReview productReview);
         List<ProductReview> AccordingToStarCount(int star, int proId);
         List<ProductReview> AccordingToProductList(int id);
     }

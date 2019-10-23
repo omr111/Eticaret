@@ -9,8 +9,8 @@ namespace ETicaret.Bll.Abstract
     {
         List<Shipper> ListThem(Expression<Func<Shipper, bool>> filter = null);
         Shipper GetOne(Expression<Func<Shipper, bool>> filter);
-        void Update(Shipper shipper);
-        void Delete(int id);
-        void Add(Shipper shipper);
+        bool Update(Shipper shipper);
+        bool Delete(int id);
+        bool Add(Shipper shipper);
     }
 }

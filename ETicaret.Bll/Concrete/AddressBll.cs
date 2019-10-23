@@ -29,24 +29,42 @@ namespace ETicaret.Bll.Concrete
             return _addressDal.GetOne(filter);
         }
 
-        public void Update(Address address)
+        public bool Update(Address address)
         {
-            _addressDal.Update(address);
+            bool result=_addressDal.Update(address);
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        public void Delete(Guid id)
+        public bool Delete(Guid id)
         {
             var deleteObject = _addressDal.GetOne(x=>x.Id==id);
             if (deleteObject!=null)
             {
-                _addressDal.Delete(deleteObject);
+                bool result = _addressDal.Delete(deleteObject);
+                if (result)
+                {
+                    return true;
+                }
+
+                return false;
             }
-            
+            return false;
         }
 
-        public void Add(Address address)
+        public bool Add(Address address)
         {
-            _addressDal.Add(address);
+           bool result= _addressDal.Add(address);
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

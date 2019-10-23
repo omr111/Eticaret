@@ -39,90 +39,10 @@
      JS 
 <script src="~/Content/js/vendor/jquery-2.2.4.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    @*<script src="~/Content/colorlib-wizard-16/vendor/jquery/jquery.min.js"></script>
-    <script src="~/Content/colorlib-wizard-16/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/Content/colorlib-wizard-16/vendor/jquery-validation/dist/additional-methods.min.js"></script>
-    <script src="~/Content/colorlib-wizard-16/vendor/jquery-steps/jquery.steps.min.js"></script>
-    <script src="~/Content/colorlib-wizard-16/vendor/minimalist-picker/dobpicker.js"></script>
-    <script src="~/Content/colorlib-wizard-16/vendor/jquery.pwstrength/jquery.pwstrength.js"></script>
-    <script src="~/Content/colorlib-wizard-16/js/main.js"></script>*@
-@*<script src="~/Content/js/jquery.unobtrusive-ajax.min.js"></script>*@
    
 <script src="~/Content/dropzone/dropzone.min.js"></script>
 
 
-<script>
-    var proId = @Convert.ToInt32(ViewBag.kayitEdilen);
-    $(".newOption").click(function () {
-        var html = ' <div class="form-group" style="clear: both; float: left !important">';
-        html += '<label for="full_name" class="form-label">Özellik Tip</label>';
-        html +='<input class="ozellik" type="text" name="full_name" id="full_name" placeholder="Özellik Tip" style="width: 40% !important;" />';
-        html +='<input class="ozellik" type="text" name="full_name" id="full_name" placeholder="Açıklama" style="width: 20% !important;"/>';
-        html += '</div>';
-        $(".newOption").before(html);
-    });
-    $(".dene").click(function() {
-        var proId=$(".ozellikGizle").data("id");
-       
-        var al = document.getElementsByClassName("ozellik");
-       
-        var text ="";
-        var i;
-        for (i = 0; i < al.length; i++) {
-            if (al[i].value!="") {
-                text += al[i].value + "-";
-            }
-        }
-        $.ajax({
-            type:"POST",
-            url: "/Product/AddProductModelOptions",
-            data: {dizi:text,proId:proId}
-        });
-    });
-</script>
-    <!--ürün eklenince ürün detay gizlenip, ürün özellikleri partial aktif olacak-->
-    <script>
-
-        // $(this).valid() bu kısmı çalışır hale getirmen gerekiyor
-    
-    
-        $(document).ready(function() {
-            $('form').submit(function (event) {
-                event.preventDefault();
-                var id = $(".ozellikGizle").data("id");
-                var price = document.getElementsByClassName("price")[0].value;
-                var Name = document.getElementsByClassName("Name")[0].value;
-                var Caption = document.getElementsByClassName("Caption")[0].value;
-                var Description = document.getElementsByClassName("Description")[0].value;
-                var ProductBrandID = document.getElementsByClassName("ProductBrandID")[0].value;
-                var Category_Id = document.getElementsByClassName("Category_Id")[0].value;
-
-                $.ajax({
-                    url: this.action,
-                    type: this.method,
-                    data: {
-                        id:id,
-                        Name: Name,
-                        Caption: Caption,
-                        Description: Description,
-                        ProductBrandID: ProductBrandID,
-                        Category_Id: Category_Id,
-                        price: price
-                    }, 
-                    success: function (data) {
-                        if (data.sonuc == 1) {
-                            $(".ozellikGizle").css('visibility' , 'visible');
-                            $(".ozellikGizle").data("id",data.pro);
-                        }
-                    },
-                    error: function () {
-                        alert("hata");
-                    }
-                });
-            });
-        });
-
-    </script>
 </body>
 
 </html>

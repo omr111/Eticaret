@@ -22,19 +22,20 @@
                 <textarea class="form-control" name="text" id="message" rows="1" placeholder="Review" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Review'"></textarea>
             </div>
         </div>
-       @if (Session["Login"] != null)
-       {
-           <div class="col-md-12 text-right">
-               <button type="submit" value="submit" class="primary-btn">Ürünü Yorumla</button>
-           </div>
-       }
-       else
-       {
-           <div class="col-md-12 text-right">
-               <a href="/Account/Login" class="primary-btn"> Giriş Yap</a>
-           </div>
-       }
+        @if (Session["Login"] != null)
+        {
+            <div class="col-md-12 text-right">
+                <button type="submit" value="submit" class="primary-btn">Ürünü Yorumla</button>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-12 text-right">
+                <a href="/Account/Login" class="primary-btn"> Giriş Yap</a>
+            </div>
+        }
     </form>
+    <h4 style="color:orangered">@ViewBag.YorumHata </h4>
 </div>
 
 <script src="~/Content/js/vendor/jquery-2.2.4.min.js"></script>

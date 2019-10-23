@@ -10,9 +10,9 @@ namespace ETicaret.Bll.Abstract
         List<OrderDetail> ListThem(Expression<Func<OrderDetail, bool>> filter = null);
         List<OrderDetail> MostOrderList(Expression<Func<OrderDetail, bool>> filter = null);
         OrderDetail GetOne(Expression<Func<OrderDetail, bool>> filter);
-        void Update(OrderDetail order);
-        void Delete(Guid id);
-        void Add(OrderDetail order);
+        bool Update(OrderDetail order);
+        bool Delete(Guid id);
+        bool Add(OrderDetail order);
 
     }
 }

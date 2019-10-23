@@ -92,6 +92,8 @@ namespace ETicaret.MVCUI.Controllers
         //    }
 
         //}
+
+        //todo yorum ekleme çalışmıyor.
         [HttpPost]
         public ActionResult AddComment(Comment com)
         {
@@ -114,16 +116,17 @@ namespace ETicaret.MVCUI.Controllers
             }
             return RedirectToAction("Detay", new { id = com.Product_Id });
         }
+        //todo yorum boş gönderildiğinde hata verdirilmeli
         [HttpPost]
         public ActionResult Review(int? voteCount, int productId, string text)
         {
             try
             {
-
+                string hata="";
                 Member loginMember = (Member)Session["Login"];
                 ProductReview review = new ProductReview();
                 review.productId = productId;
-                if (voteCount!=null)
+                if (voteCount!=null|| !string.IsNullOrEmpty(text))
                 {
                     review.YildizSayisi = voteCount.Value;
                     review.text = text;
@@ -133,8 +136,14 @@ namespace ETicaret.MVCUI.Controllers
                     return RedirectToAction("Detay", new { id = productId });
 
                 }
-                return RedirectToAction("Detay", new { id = productId });
-                
+                else
+                {
+                   hata ="Yıldız Değerlendirme ve Yorum Satırı Boş Geçilemez!";
+                    ViewBag.YorumHata = hata;
+                }
+
+                return RedirectToAction("Detay", new { id = productId }); ;
+
             }
             catch (Exception e)
             {
@@ -163,6 +172,7 @@ namespace ETicaret.MVCUI.Controllers
         [HttpPost]
         public ActionResult AddProduct(Product pro)
         {
+            //todo ürün ekleme view değiştirilecek. ürün ekledikten sonra redirecttoAction diyerek AddProductModelOptions actionına gönderip Özellikleri oradan yapacağız. Tek sayfada sayfa gizle aç işlemini iptal edeceğiz.
 
             try
             {
@@ -174,14 +184,16 @@ namespace ETicaret.MVCUI.Controllers
                     pro.ModifiedDate = DateTime.Now;
                     pro.ProductTypeID = 1;
                     pro.IsContinued = true;
-                    _productBll.Add(pro);
-                    ViewBag.kayitEdilen = pro.Id;
-                    
+                   bool resultAdd= _productBll.Add(pro);
+                   
+                    if (resultAdd)
+                    {
+                        
+                        return RedirectToAction("AddProductOptions",pro);
+                    }
                 }
-               
                 else
                 {
-
                     isValidProduct.ModifiedDate = DateTime.Now;
                     isValidProduct.Caption = pro.Caption;
                     isValidProduct.ProductBrandID = pro.ProductBrandID;
@@ -190,16 +202,17 @@ namespace ETicaret.MVCUI.Controllers
                     isValidProduct.Description = pro.Description;
                     isValidProduct.Name = pro.Name;
                     isValidProduct.Price = pro.Price;
-                    
 
-
-                    _productBll.Update(isValidProduct);
+                    bool resultUpdate=_productBll.Update(isValidProduct);
+                    if (resultUpdate)
+                    {
+                       
+                        return RedirectToAction("AddProductOptions" ,isValidProduct);
+                    }
                 }
-                
-                
-                return Json(new{
-                    sonuc=1,pro=pro.Id
-                });
+
+                return RedirectToAction("AddProductOptions", pro);
+               
             }
             catch (Exception e)
             {
@@ -211,18 +224,57 @@ namespace ETicaret.MVCUI.Controllers
 
         }
 
-        [HttpPost]
-        public ActionResult AddProductModelOptions(string dizi, int proId)
+        //[HttpPost]
+        //public ActionResult AddProductModelOptions(string dizi, int proId)
+        //{
+        //    ProductSpesification ps = new ProductSpesification();
+        //    try
+        //    {
+
+
+        //        Product pro = _productBll.GetOne(x => x.Id == proId);
+               
+        //        string[] kes = dizi.Split('-');
+
+        //        for (int i = 0; i < kes.Length; i++)
+        //        {
+        //            if (kes[i] != "")
+        //            {
+        //                ps.ProductId = pro.Id;
+        //                ps.SpeCaption = kes[0];
+        //                ps.SpeDescription = kes[1];
+        //                _productSpesificationBll.Add(ps);
+        //            }
+        //        }
+        //        return Json(1);
+        //        }
+           
+        //    catch (Exception e)
+        //    {
+        //        return Json(0);
+        //    }
+
+        //}
+
+        public ActionResult AddProductOptions(Product pro)
         {
+            //Product product=_productBll.GetOne(x=>x.Id==pro.Id);
+
+            return View(pro);
+
+
+        }
+
+        [HttpPost]
+        public ActionResult AddProductOptions(string dizi,int proId)
+        {
+
+            
             ProductSpesification ps = new ProductSpesification();
             try
             {
-
-
                 Product pro = _productBll.GetOne(x => x.Id == proId);
-               
                 string[] kes = dizi.Split('-');
-
                 for (int i = 0; i < kes.Length; i++)
                 {
                     if (kes[i] != "")
@@ -233,14 +285,25 @@ namespace ETicaret.MVCUI.Controllers
                         _productSpesificationBll.Add(ps);
                     }
                 }
-                return Json(1);
-                }
-           
+
+                return RedirectToAction("AddProductPicture",proId);
+            }
             catch (Exception e)
             {
-                return Json(0);
+                return Json(e.Message);
             }
+        }
 
+        public ActionResult AddProductPicture()
+        {
+            return View();
+
+        }
+        [HttpPost]
+        public ActionResult AddProductPicture(int id,HttpPostedFileBase picture)
+        {
+            Product pro=_productBll.GetOne(x => x.Id == id);
+            return RedirectToAction("Detay", new {id = pro.Id});
         }
     }
 }

@@ -29,23 +29,42 @@ namespace ETicaret.Dal.Concrete.EntityFramework
             return ctx.Set<T>().FirstOrDefault(filter);
         }
 
-        public void Update(T entity)
+        public bool Update(T entity)
         {
             
             ctx.Entry(entity).State = EntityState.Modified;
-            ctx.SaveChanges();
+            int result=ctx.SaveChanges();
+            if (result>0)
+            {
+                return true;
+            }
+            
+                return false;
+            
         }
 
-        public void Delete(T entity)
+        public bool Delete(T entity)
         {
             ctx.Entry(entity).State = EntityState.Deleted;
-            ctx.SaveChanges(); 
+            int result = ctx.SaveChanges();
+            if (result > 0)
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        public void Add(T entity)
+        public bool Add(T entity)
         {
             ctx.Entry(entity).State = EntityState.Added;
-            ctx.SaveChanges();
+            int result = ctx.SaveChanges();
+            if (result > 0)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

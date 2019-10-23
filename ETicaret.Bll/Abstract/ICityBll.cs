@@ -9,8 +9,8 @@ namespace ETicaret.Bll.Abstract
     {
         List<City> ListThem(Expression<Func<City, bool>> filter = null);
         City GetOne(Expression<Func<City, bool>> filter);
-        void Update(City city);
-        void Delete(int id);
-        void Add(City city);
+        bool Update(City city);
+        bool Delete(int id);
+        bool Add(City city);
     }
 }

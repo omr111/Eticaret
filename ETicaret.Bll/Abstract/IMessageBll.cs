@@ -9,8 +9,8 @@ namespace ETicaret.Bll.Abstract
     {
         List<Message> ListThem(Expression<Func<Message, bool>> filter=null);
         Message GetOne(Expression<Func<Message, bool>> filter);
-        void Update(Message message);
-        void Delete(Guid id);
-        void Add(Message message);
+        bool Update(Message message);
+        bool Delete(Guid id);
+        bool Add(Message message);
     }
 }

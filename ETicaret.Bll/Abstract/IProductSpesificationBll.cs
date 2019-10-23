@@ -9,8 +9,8 @@ namespace ETicaret.Bll.Abstract
     {
         List<ProductSpesification> ListThem(Expression<Func<ProductSpesification, bool>> filter = null);
         ProductSpesification GetOne(Expression<Func<ProductSpesification, bool>> filter);
-        void Update(ProductSpesification category);
-        void Delete(int id);
-        void Add(ProductSpesification category);
+        bool Update(ProductSpesification category);
+        bool Delete(int id);
+        bool Add(ProductSpesification category);
     }
 }

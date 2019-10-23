@@ -1,0 +1,113 @@
+﻿@{
+    Layout = null;
+}
+@model ETicaret.Entities.Models.Product
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="colorlib.com">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form</title>
+
+    <!-- Font Icon -->
+    <link href="~/Content/colorlib-wizard-16/fonts/material-icon/css/material-design-iconic-font.min.css" rel="stylesheet" />
+
+    <script src="~/Content/dropzone/dropzone.js"></script>
+
+    <!-- Main css -->
+    <link href="~/Content/colorlib-wizard-16/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="ozellikGizle signup-form" >
+        <form method="post" action="/Product/AddProductOptions" id="form" class="form">
+            <h3>
+                <span class="title_text">Ürün Özellikleri</span>
+            </h3>
+            <fieldset>
+
+                <div class="fieldset-content" style="overflow-y: scroll !important">
+                    <div class="form-group" style="float: left !important">
+                        <label name="proid" for="full_name" class="form-label">Özellik Tip</label>
+                        <input class="ozellik form-control" type="text" name="SpeCaption" id="full_name" placeholder="Özellik Tip" style="width: 40% !important;" />
+                        <input class="ozellik form-control" type="text" name="SpeDescription" id="full_name" placeholder="Açıklama" style="width: 20% !important;" />
+                    </div>
+                    <div class="form-group" style="clear: both; float: left !important">
+                        <label for="full_name" class="form-label">Özellik Tip</label>
+                        <input class="ozellik form-control" type="text" name="SpeCaption" id="full_name" placeholder="Özellik Tip" style="width: 40% !important;" />
+                        <input class="ozellik form-control" type="text" name="SpeDescription" id="full_name" placeholder="Açıklama" style="width: 20% !important;" />
+                    </div>
+                    <div class="form-group" style="clear: both; float: left !important">
+                        <label for="full_name" class="form-label">Özellik Tip</label>
+                        <input class="ozellik form-control" type="text" name="full_name" id="full_name" placeholder="Özellik Tip" style="width: 40% !important;" />
+                        <input class="ozellik form-control" type="text" name="full_name" id="full_name" placeholder="Açıklama" style="width: 20% !important;" />
+                    </div>
+                    <div class="form-group" style="clear: both; float: left !important">
+                        <label for="full_name" class="form-label">Özellik Tip</label>
+                        <input class="ozellik form-control" type="text" name="full_name" id="full_name" placeholder="Özellik Tip" style="width: 40% !important;" />
+                        <input class="ozellik form-control" type="text" name="full_name" id="full_name" placeholder="Açıklama" style="width: 20% !important;" />
+                    </div>
+
+                    <a style="margin-left: 30%; text-decoration: none" href="javascript:void(0)" class="newOption"> Yeni bir özellik eklemek için tıklayınız.</a>
+                    <button type="submit" class="dene btn-default">deneme</button>
+                </div>
+
+                <div class="fieldset-footer">
+                    <span>Adım 2 / 3</span>
+                </div>
+
+            </fieldset>
+
+        </form>
+    </div>
+</div>
+<script src="~/Content/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+       
+        $(".newOption").click(function () {
+            var html = ' <div class="form-group" style="clear: both; float: left !important">';
+            html += '<label for="full_name" class="form-label">Özellik Tip</label>';
+            html +='<input class="ozellik " type="text" name="full_name" id="full_name" placeholder="Özellik Tip" style="width: 40% !important;" />';
+            html +='<input class="ozellik" type="text" name="full_name" id="full_name" placeholder="Açıklama" style="width: 20% !important;"/>';
+            html += '</div>';
+            $(".newOption").before(html);
+        });
+        $(".dene").click(function() {
+            var proid=@Model.Id;
+        
+            var al = document.getElementsByClassName("ozellik");
+
+            var text ="";
+            var i;
+            for (i = 0; i < al.length; i++) {
+                if (al[i].value!="") {
+                    text += al[i].value + "-";
+                }
+            }
+            $.ajax({
+                type:"POST",
+                url: "/Product/AddProductOptions",
+                data: {dizi:text,proId:proid},
+                failed:function(data) {
+                    var ekle = "";
+                    ekle += "<h3>";
+                    ekle += data;
+                    ekle += "</h3>";
+                    $(".dene").after(ekle);
+
+                }
+                
+            });
+        });
+    </script>
+
+</body>
+
+</html>

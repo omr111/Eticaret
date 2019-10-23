@@ -27,21 +27,39 @@ namespace ETicaret.Bll.Concrete
             return _productReviewDal.GetOne(filter);
         }
 
-        public void Update(ProductReview productReview)
+        public bool Update(ProductReview productReview)
         {
-            _productReviewDal.Update(productReview);
+            bool result = _productReviewDal.Update(productReview);
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
-            
-            _productReviewDal.Delete(_productReviewDal.GetOne(x => x.id == id));
+
+            bool result = _productReviewDal.Delete(_productReviewDal.GetOne(x => x.id == id));
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
 
         }
 
-        public void Add(ProductReview productReview)
+        public bool Add(ProductReview productReview)
         {
-            _productReviewDal.Add(productReview);
+            bool result = _productReviewDal.Add(productReview);
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public List<ProductReview> AccordingToStarCount(int star, int proId)

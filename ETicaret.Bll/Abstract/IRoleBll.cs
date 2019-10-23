@@ -9,8 +9,8 @@ namespace ETicaret.Bll.Abstract
     {
         List<Role> ListThem(Expression<Func<Role, bool>> filter);
         Role GetOne(Expression<Func<Role, bool>> filter);
-        void Update(Role role);
-        void Delete(int id);
-        void Add(Role role);
+        bool Update(Role role);
+        bool Delete(int id);
+        bool Add(Role role);
     }
 }

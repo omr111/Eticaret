@@ -9,9 +9,9 @@ namespace ETicaret.Bll.Abstract
     {
         List<Comment> ListThem(Expression<Func<Comment, bool>> filter=null);
         Comment GetOne(Expression<Func<Comment, bool>> filter);
-        void Update(Comment comment);
-        void Delete(int id);
-        void Add(Comment comment);
+        bool Update(Comment comment);
+        bool Delete(int id);
+        bool Add(Comment comment);
         List<Comment> GetCommentAccordingToProductId(int id);
         List<Comment> ListAccordingToProductId(int id );
     }

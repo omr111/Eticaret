@@ -26,22 +26,40 @@ namespace ETicaret.Bll.Concrete
             return _productSpesificationDal.GetOne(filter);
         }
 
-        public void Update(ProductSpesification productSpesification)
+        public bool Update(ProductSpesification productSpesification)
         {
-            _productSpesificationDal.Update(productSpesification);
+            bool result = _productSpesificationDal.Update(productSpesification);
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
 
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
 
             var delete=_productSpesificationDal.GetOne(x => x.ProductId == id);
-            _productSpesificationDal.Delete(delete);
+            bool result = _productSpesificationDal.Delete(delete);
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        public void Add(ProductSpesification productSpesification)
+        public bool Add(ProductSpesification productSpesification)
         {
-            _productSpesificationDal.Add(productSpesification);
+            bool result = _productSpesificationDal.Add(productSpesification);
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

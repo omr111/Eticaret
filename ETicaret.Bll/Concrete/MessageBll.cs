@@ -25,26 +25,45 @@ namespace ETicaret.Bll.Concrete
         public Message GetOne(Expression<Func<Message, bool>> filter)
         {
             return _messageDal.GetOne(filter);
+
         }
 
-        public void Update(Message message)
+        public bool Update(Message message)
         {
-            _messageDal.Update(message);
+            bool result = _messageDal.Update(message);
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        public void Delete(Guid id)
+        public bool Delete(Guid id)
         {
             var deleteObject = _messageDal.GetOne(x => x.Id == id);
             if (deleteObject!=null)
             {
-                _messageDal.Delete(deleteObject);
+                bool result = _messageDal.Delete(deleteObject);
+                if (result)
+                {
+                    return true;
+                }
+
+                return false;
             }
-            
+            return false;
         }
 
-        public void Add(Message message)
+        public bool Add(Message message)
         {
-            _messageDal.Add(message);
+           bool result= _messageDal.Add(message);
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

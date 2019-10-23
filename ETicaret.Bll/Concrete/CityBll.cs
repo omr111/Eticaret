@@ -27,24 +27,42 @@ namespace ETicaret.Bll.Concrete
             return _cityDal.GetOne(filter);
         }
 
-        public void Update(City city)
+        public bool Update(City city)
         {
-            _cityDal.Update(city);
+            bool result = _cityDal.Update(city);
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             var deleteObject = _cityDal.GetOne(x => x.id == id);
             if (deleteObject!=null)
             {
-                _cityDal.Delete(deleteObject);
+                bool result = _cityDal.Delete(deleteObject);
+                if (result)
+                {
+                    return true;
+                }
+
+                return false;
             }
-            
+            return false;
         }
 
-        public void Add(City city)
+        public bool Add(City city)
         {
-            _cityDal.Add(city);
+           bool result= _cityDal.Add(city);
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

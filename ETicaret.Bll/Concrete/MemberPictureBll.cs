@@ -27,24 +27,42 @@ namespace ETicaret.Bll.Concrete
             return _memberPictureDal.GetOne(filter);
         }
 
-        public void Update(MemberPicture memberPicture)
+        public bool Update(MemberPicture memberPicture)
         {
-            _memberPictureDal.Update(memberPicture);
+            bool result = _memberPictureDal.Update(memberPicture);
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             var deleteObject = _memberPictureDal.GetOne(x => x.id == id);
             if (deleteObject!=null)
             {
-                _memberPictureDal.Delete(deleteObject);
+                bool result = _memberPictureDal.Delete(deleteObject);
+                if (result)
+                {
+                    return true;
+                }
+
+                return false;
             }
-            
+            return false;
         }
 
-        public void Add(MemberPicture memberPicture)
+        public bool Add(MemberPicture memberPicture)
         {
-            _memberPictureDal.Add(memberPicture);
+            bool result = _memberPictureDal.Add(memberPicture);
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

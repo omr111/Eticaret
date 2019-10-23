@@ -72,7 +72,7 @@ namespace ETicaret.MVCUI.Controllers
                 
                     switch (filter)
                     {
-
+                            //todo pricefilter modülünü filtrelerken brand combobox filtresini de filtrelemeye ekleyeceğiz.
                         case 1:
                             if (!down.HasValue && !up.HasValue)
                             {

@@ -9,8 +9,8 @@ namespace ETicaret.Bll.Abstract
     {
         List<Region> ListThem(Expression<Func<Region, bool>> filter = null);
         Region GetOne(Expression<Func<Region, bool>> filter);
-        void Update(Region region);
-        void Delete(int id);
-        void Add(Region region);
+        bool Update(Region region);
+        bool Delete(int id);
+        bool Add(Region region);
     }
 }

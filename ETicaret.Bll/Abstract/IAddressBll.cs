@@ -9,8 +9,8 @@ namespace ETicaret.Bll.Abstract
     {
         List<Address> ListThem(Expression<Func<Address, bool>> filter=null);
         Address GetOne(Expression<Func<Address, bool>> filter);
-        void Update(Address address);
-        void Delete(Guid id);
-        void Add(Address address);
+        bool Update(Address address);
+        bool Delete(Guid id);
+        bool Add(Address address);
     }
 }

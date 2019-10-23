@@ -12,8 +12,8 @@ namespace ETicaret.Bll.Abstract
         List<Brand> ListThem(Expression<Func<Brand, bool>> filter=null);
         Brand GetOne(Expression<Func<Brand, bool>> filter);
         List<ProductBrand> BrandsOfProduct(string brandsOfProduct, decimal? minValue, decimal? maxValue);
-        void Update(Brand brand);
-        void Delete(int id);
-        void Add(Brand brand);
+        bool Update(Brand brand);
+        bool Delete(int id);
+        bool Add(Brand brand);
     }
 }

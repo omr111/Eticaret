@@ -35,24 +35,42 @@ namespace ETicaret.Bll.Concrete
             return _brandDal.BrandsOfProduct(brandsOfProduct,minValue,maxValue).ToList();
         }
 
-        public void Update(Brand brand)
+        public bool Update(Brand brand)
         {
-            _brandDal.Update(brand);
+            bool result = _brandDal.Update(brand);
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             var deleteObject = _brandDal.GetOne(x => x.id == id);
             if (deleteObject!=null)
             {
-                _brandDal.Delete(deleteObject);
+                bool result = _brandDal.Delete(deleteObject);
+                if (result)
+                {
+                    return true;
+                }
+
+                return false;
             }
-            
+            return false;
         }
 
-        public void Add(Brand brand)
+        public bool Add(Brand brand)
         {
-            _brandDal.Add(brand);
+            bool result = _brandDal.Add(brand);
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

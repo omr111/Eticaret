@@ -27,20 +27,38 @@ namespace ETicaret.Bll.Concrete
             return _orderDetail.GetOne(filter);
         }
 
-        public void Update(OrderDetail order)
+        public bool Update(OrderDetail order)
         {
-            _orderDetail.Update(order);
+            bool result = _orderDetail.Update(order);
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        public void Delete(Guid id)
+        public bool Delete(Guid id)
         {
             var sil=_orderDetail.GetOne(x => x.Id == id);
-            _orderDetail.Delete(sil);
+            bool result = _orderDetail.Delete(sil);
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        public void Add(OrderDetail orderDetail)
+        public bool Add(OrderDetail orderDetail)
         {
-            _orderDetail.Add(orderDetail);
+            bool result = _orderDetail.Add(orderDetail);
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
         }
 
 

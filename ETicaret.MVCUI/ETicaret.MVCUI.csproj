@@ -1275,8 +1275,9 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_AddProductOptions.cshtml" />
-    <Content Include="Views\Shared\_AddProductPicture.cshtml" />
     <Content Include="Views\Shared\_AddProductWizard.cshtml" />
+    <Content Include="Views\Product\AddProductOptions.cshtml" />
+    <Content Include="Views\Product\AddProductPicture.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

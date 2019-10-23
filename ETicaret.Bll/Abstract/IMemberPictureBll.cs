@@ -9,8 +9,8 @@ namespace ETicaret.Bll.Abstract
     {
         List<MemberPicture> ListThem(Expression<Func<MemberPicture, bool>> filter = null);
         MemberPicture GetOne(Expression<Func<MemberPicture, bool>> filter);
-        void Update(MemberPicture memberPicture);
-        void Delete(int id);
-        void Add(MemberPicture memberPicture);
+        bool Update(MemberPicture memberPicture);
+        bool Delete(int id);
+        bool Add(MemberPicture memberPicture);
     }
 }
