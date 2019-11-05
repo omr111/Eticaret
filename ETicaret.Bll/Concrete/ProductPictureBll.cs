@@ -38,6 +38,8 @@ namespace ETicaret.Bll.Concrete
             return false;
         }
 
+        
+
         public bool Delete(int id)
         {
             var deleteObject = _productPictureDal.GetOne(x => x.id == id);
@@ -56,7 +58,7 @@ namespace ETicaret.Bll.Concrete
 
         public bool Add(ProductPicture productPicture)
         {
-           bool result= _productPictureDal.Add(productPicture);
+            bool result = _productPictureDal.Add(productPicture);
             if (result)
             {
                 return true;

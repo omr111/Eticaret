@@ -1053,6 +1053,22 @@
     <Content Include="Template%28using%29\single-blog.html" />
     <Content Include="Template%28using%29\single-product.html" />
     <Content Include="Template%28using%29\tracking.html" />
+    <Content Include="Uploads\Pictures\f-2201-233a10a0-8f94-4903-ae89-7b9dac7ded1d.jpeg" />
+    <Content Include="Uploads\Pictures\f-2201-95f1f7ad-45f4-4755-a6ac-b835a090a391.jpeg" />
+    <Content Include="Uploads\Pictures\f-2201-9cc65b0d-1bf0-4ca9-839e-26ec37980f0d.jpeg" />
+    <Content Include="Uploads\Pictures\f-2202-0fd8de0e-8ac4-41a6-b642-f31783272133.jpeg" />
+    <Content Include="Uploads\Pictures\f-2202-3ad51131-d433-459e-824e-1772dd4d44ef.jpeg" />
+    <Content Include="Uploads\Pictures\f-2202-62ec4da0-687f-4915-aaa2-8e770db74823.jpeg" />
+    <Content Include="Uploads\Pictures\f-2204-09c0a8e9-36bf-4c26-8c8a-6072342a35d6.jpeg" />
+    <Content Include="Uploads\Pictures\f-2204-49093e75-c58b-4157-9191-00d3407d045d.jpeg" />
+    <Content Include="Uploads\Pictures\f-2204-5e849c32-428a-4aed-b750-d91edb5b51ba.jpeg" />
+    <Content Include="Uploads\Pictures\f-2205-7885a528-e38b-4d99-9e2b-c2edd6f29c79.jpeg" />
+    <Content Include="Uploads\Pictures\f-2205-b3b5d84c-de66-41e8-9dbd-fb9700bfe8dc.jpeg" />
+    <Content Include="Uploads\Pictures\f-2205-d10dfdcc-61f5-42ee-a433-99e8e9f5b13d.jpeg" />
+    <Content Include="Uploads\ThumpNail\f-2201-1dc8d933-c92c-4a64-b8ae-2695d5fbc69a.jpeg" />
+    <Content Include="Uploads\ThumpNail\f-2202-19e46829-4096-4f72-86ea-bbd70fefffdb.jpeg" />
+    <Content Include="Uploads\ThumpNail\f-2204-b58194de-bf76-4b98-9b7b-e2a07719f136.jpeg" />
+    <Content Include="Uploads\ThumpNail\f-2205-c3f344a3-9a95-4bca-b1f0-770e5d06bb79.jpeg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -1068,6 +1084,7 @@
     <Compile Include="Models\FilterPage.cs" />
     <Compile Include="Models\HomeIndexKarmaModel.cs" />
     <Compile Include="Models\ProductAndReviews.cs" />
+    <Compile Include="Models\ProductOptionAndID.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1274,10 +1291,10 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_AddProductOptions.cshtml" />
     <Content Include="Views\Shared\_AddProductWizard.cshtml" />
     <Content Include="Views\Product\AddProductOptions.cshtml" />
     <Content Include="Views\Product\AddProductPicture.cshtml" />
+    <Content Include="Views\Shared\_liveChat.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

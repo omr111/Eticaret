@@ -12,9 +12,11 @@ namespace ETicaret.Entities.Models.Mapping
 
             // Properties
             this.Property(t => t.Name)
+                .IsRequired()
                 .HasMaxLength(25);
 
             this.Property(t => t.Surname)
+                .IsRequired()
                 .HasMaxLength(25);
 
             this.Property(t => t.Email)

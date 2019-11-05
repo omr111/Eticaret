@@ -5,9 +5,10 @@
 
 @foreach (Product pro in Model.Products)
 {
+  
     <div class="col-lg-4 col-md-6">
         <div class="single-product">
-            <a href="/Product/Detay/@pro.Id"><img class="img-fluid" src="/Content/img/product/p1.jpg" alt=""></a>
+            <a href="/Product/Detay/@pro.Id"><img class="img-fluid" src="@pro.ThumpNailPicture" alt=""></a>
             <div class="product-details">
                 <h6>
                     <a href="/Product/Detay/@pro.Id">@pro.Name</a>

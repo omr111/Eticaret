@@ -21,7 +21,7 @@ namespace ETicaret.Entities.Models.Mapping
             this.Property(t => t.PicturePath).HasColumnName("PicturePath");
 
             // Relationships
-            this.HasOptional(t => t.Member)
+            this.HasRequired(t => t.Member)
                 .WithMany(t => t.MemberPictures)
                 .HasForeignKey(d => d.MemberID);
 

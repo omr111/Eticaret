@@ -12,6 +12,7 @@ namespace ETicaret.Entities.Models.Mapping
 
             // Properties
             this.Property(t => t.AdresDescription)
+                .IsRequired()
                 .HasMaxLength(300);
 
             // Table & Column Mappings

@@ -20,8 +20,8 @@ namespace ETicaret.Entities.Models
         public string Description { get; set; }
         public int ProductTypeID { get; set; }
         public int ProductBrandID { get; set; }
+        public string ThumpNailPicture { get; set; }
         public decimal Price { get; set; }
-        public string CoverPicture { get; set; }
         public bool IsContinued { get; set; }
         public int StarPoint { get; set; }
         public int StarGivenMemberCount { get; set; }

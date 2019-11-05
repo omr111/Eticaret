@@ -15,8 +15,6 @@
     <!-- Font Icon -->
     <link href="~/Content/colorlib-wizard-16/fonts/material-icon/css/material-design-iconic-font.min.css" rel="stylesheet" />
 
-    <script src="~/Content/dropzone/dropzone.js"></script>
-
     <!-- Main css -->
     <link href="~/Content/colorlib-wizard-16/css/style.css" rel="stylesheet" />
 </head>
@@ -26,7 +24,7 @@
 <div class="container">
 
     <div class="ozellikGizle signup-form" >
-        <form method="post" action="/Product/AddProductOptions" id="form" class="form">
+        <form method="post" action="/Product/AddProductOptions" onsubmit="return false" id="form" class="form">
             <h3>
                 <span class="title_text">Ürün Özellikleri</span>
             </h3>
@@ -80,7 +78,7 @@
             $(".newOption").before(html);
         });
         $(".dene").click(function() {
-            var proid=@Model.Id;
+            var id=@Model.Id;
         
             var al = document.getElementsByClassName("ozellik");
 
@@ -91,11 +89,23 @@
                     text += al[i].value + "-";
                 }
             }
+        
+         
             $.ajax({
                 type:"POST",
                 url: "/Product/AddProductOptions",
-                data: {dizi:text,proId:proid},
+              
+                data:{id:id,dizi:text} ,
+                success:function(data) {
+                    if (data == "success") {
+                        document.location="/Product/AddProductPicture/"+id;
+                     
+                    } else {
+                        document.location = "/Home/Index";
+                    }
+                },
                 failed:function(data) {
+                   
                     var ekle = "";
                     ekle += "<h3>";
                     ekle += data;
@@ -103,7 +113,6 @@
                     $(".dene").after(ekle);
 
                 }
-                
             });
         });
     </script>

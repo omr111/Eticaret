@@ -8,7 +8,7 @@ namespace ETicaret.Entities.Models
         public int Id { get; set; }
         public string Text { get; set; }
         public int Member_Id { get; set; }
-        public Nullable<int> ToWhoId { get; set; }
+        public int ToWhoId { get; set; }
         public int Product_Id { get; set; }
         public System.DateTime AddedDate { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }

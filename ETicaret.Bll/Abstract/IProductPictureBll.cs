@@ -12,5 +12,6 @@ namespace ETicaret.Bll.Abstract
         bool Update(ProductPicture productPicture);
         bool Delete(int id);
         bool Add(ProductPicture productPicture);
+       
     }
 }

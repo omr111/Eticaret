@@ -29,7 +29,7 @@ namespace ETicaret.Entities.Models.Mapping
             this.HasRequired(t => t.Member)
                 .WithMany(t => t.Comments)
                 .HasForeignKey(d => d.Member_Id);
-            this.HasOptional(t => t.Member1)
+            this.HasRequired(t => t.Member1)
                 .WithMany(t => t.Comments1)
                 .HasForeignKey(d => d.ToWhoId);
             this.HasRequired(t => t.Product)

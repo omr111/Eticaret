@@ -16,12 +16,13 @@ namespace ETicaret.Entities.Models.Mapping
                 .HasMaxLength(50);
 
             this.Property(t => t.Caption)
+                .IsRequired()
                 .HasMaxLength(75);
 
             this.Property(t => t.Description)
                 .IsRequired();
 
-            this.Property(t => t.CoverPicture)
+            this.Property(t => t.ThumpNailPicture)
                 .HasMaxLength(150);
 
             // Table & Column Mappings
@@ -32,8 +33,8 @@ namespace ETicaret.Entities.Models.Mapping
             this.Property(t => t.Description).HasColumnName("Description");
             this.Property(t => t.ProductTypeID).HasColumnName("ProductTypeID");
             this.Property(t => t.ProductBrandID).HasColumnName("ProductBrandID");
+            this.Property(t => t.ThumpNailPicture).HasColumnName("ThumpNailPicture");
             this.Property(t => t.Price).HasColumnName("Price");
-            this.Property(t => t.CoverPicture).HasColumnName("CoverPicture");
             this.Property(t => t.IsContinued).HasColumnName("IsContinued");
             this.Property(t => t.StarPoint).HasColumnName("StarPoint");
             this.Property(t => t.StarGivenMemberCount).HasColumnName("StarGivenMemberCount");

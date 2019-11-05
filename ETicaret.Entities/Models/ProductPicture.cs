@@ -6,9 +6,8 @@ namespace ETicaret.Entities.Models
     public partial class ProductPicture
     {
         public int id { get; set; }
-        public string BigPicture { get; set; }
-        public string MediumPicture { get; set; }
         public int ProductID { get; set; }
+        public string PicPath { get; set; }
         public virtual Product Product { get; set; }
     }
 }

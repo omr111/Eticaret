@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ETicaret.Bll.Abstract;
 using ETicaret.Bll.Concrete;
-using ETicaret.Dal.Concrete;
 using ETicaret.Dal.Concrete.EntityFramework;
 using ETicaret.Entities.Models;
 using ETicaret.MVCUI.Models;
+using System.Drawing;
 
 namespace ETicaret.MVCUI.Controllers
 {
@@ -19,7 +20,7 @@ namespace ETicaret.MVCUI.Controllers
         ICommentBll _commentBll = new CommentBll(new CommentDal());
         IProductReviewBll _productReviewBll = new ProductReviewBll(new ProductReviewDal());
         IProductSpesificationBll _productSpesificationBll = new ProductSpesificationBll(new ProductSpesificationDal());
-        IProductPictureBll _productPictureBll = new ProductPictureBll(new ProductPictureDal());
+
 
         // GET: Product
         int pageSize = 5;
@@ -99,13 +100,13 @@ namespace ETicaret.MVCUI.Controllers
         {
             try
             {
-                if (com.Text!=null)
+                if (com.Text != null)
                 {
-                    
-                Member member = (Member)Session["Login"];
-                com.AddedDate = DateTime.Now;
-                com.Member_Id = member.Id;
-                _commentBll.Add(com);
+
+                    Member member = (Member)Session["Login"];
+                    com.AddedDate = DateTime.Now;
+                    com.Member_Id = member.Id;
+                    _commentBll.Add(com);
                 }
 
             }
@@ -122,11 +123,11 @@ namespace ETicaret.MVCUI.Controllers
         {
             try
             {
-                string hata="";
+                string hata = "";
                 Member loginMember = (Member)Session["Login"];
                 ProductReview review = new ProductReview();
                 review.productId = productId;
-                if (voteCount!=null|| !string.IsNullOrEmpty(text))
+                if (voteCount != null || !string.IsNullOrEmpty(text))
                 {
                     review.YildizSayisi = voteCount.Value;
                     review.text = text;
@@ -138,7 +139,7 @@ namespace ETicaret.MVCUI.Controllers
                 }
                 else
                 {
-                   hata ="Yıldız Değerlendirme ve Yorum Satırı Boş Geçilemez!";
+                    hata = "Yıldız Değerlendirme ve Yorum Satırı Boş Geçilemez!";
                     ViewBag.YorumHata = hata;
                 }
 
@@ -158,6 +159,7 @@ namespace ETicaret.MVCUI.Controllers
         {
             ICategoryBll _categoryBll = new CategoryBll(new CategoryDal());
             IBrandBll _brandBll = new BrandBll(new BrandDal());
+
             //todo kategoriler parent-child kategoriye çevrilince düzenlenecek.
 
 
@@ -176,20 +178,24 @@ namespace ETicaret.MVCUI.Controllers
 
             try
             {
-                Product isValidProduct=_productBll.GetOne(x => x.Id == pro.Id);
-                
-                if (isValidProduct==null)
+                Product isValidProduct = _productBll.GetOne(x => x.Id == pro.Id);
+
+                if (isValidProduct == null)
                 {
                     pro.AddedDate = DateTime.Now;
                     pro.ModifiedDate = DateTime.Now;
                     pro.ProductTypeID = 1;
                     pro.IsContinued = true;
-                   bool resultAdd= _productBll.Add(pro);
-                   
+                    bool resultAdd = _productBll.Add(pro);
+
                     if (resultAdd)
                     {
-                        
-                        return RedirectToAction("AddProductOptions",pro);
+
+                        return RedirectToAction("AddProductOptions", new { id = pro.Id });
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
                     }
                 }
                 else
@@ -203,90 +209,72 @@ namespace ETicaret.MVCUI.Controllers
                     isValidProduct.Name = pro.Name;
                     isValidProduct.Price = pro.Price;
 
-                    bool resultUpdate=_productBll.Update(isValidProduct);
+                    bool resultUpdate = _productBll.Update(isValidProduct);
                     if (resultUpdate)
                     {
-                       
-                        return RedirectToAction("AddProductOptions" ,isValidProduct);
+
+                        return RedirectToAction("AddProductOptions", new { id = isValidProduct.Id });
                     }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+
                 }
 
-                return RedirectToAction("AddProductOptions", pro);
-               
+
             }
             catch (Exception e)
             {
-                return Json(0);
+                return RedirectToAction("Index", "Home");
             }
-
-
-
 
         }
 
-        //[HttpPost]
-        //public ActionResult AddProductModelOptions(string dizi, int proId)
-        //{
-        //    ProductSpesification ps = new ProductSpesification();
-        //    try
-        //    {
-
-
-        //        Product pro = _productBll.GetOne(x => x.Id == proId);
-               
-        //        string[] kes = dizi.Split('-');
-
-        //        for (int i = 0; i < kes.Length; i++)
-        //        {
-        //            if (kes[i] != "")
-        //            {
-        //                ps.ProductId = pro.Id;
-        //                ps.SpeCaption = kes[0];
-        //                ps.SpeDescription = kes[1];
-        //                _productSpesificationBll.Add(ps);
-        //            }
-        //        }
-        //        return Json(1);
-        //        }
-           
-        //    catch (Exception e)
-        //    {
-        //        return Json(0);
-        //    }
-
-        //}
-
-        public ActionResult AddProductOptions(Product pro)
+        public ActionResult AddProductOptions(int? id)
         {
-            //Product product=_productBll.GetOne(x=>x.Id==pro.Id);
-
-            return View(pro);
 
 
+            Product product = _productBll.GetOne(x => x.Id == id.Value);
+            if (product != null)
+            {
+                return View(product);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         [HttpPost]
-        public ActionResult AddProductOptions(string dizi,int proId)
+        public JsonResult AddProductOptions(int? id, string dizi)
         {
-
-            
-            ProductSpesification ps = new ProductSpesification();
             try
             {
-                Product pro = _productBll.GetOne(x => x.Id == proId);
-                string[] kes = dizi.Split('-');
-                for (int i = 0; i < kes.Length; i++)
+                ProductSpesification ps = new ProductSpesification();
+                Product pro = _productBll.GetOne(x => x.Id == id);
+                if (pro != null)
                 {
-                    if (kes[i] != "")
+                    string[] kes = dizi.Split('-');
+
+                    if (kes.Length > 0)
                     {
-                        ps.ProductId = pro.Id;
-                        ps.SpeCaption = kes[0];
-                        ps.SpeDescription = kes[1];
-                        _productSpesificationBll.Add(ps);
+                        for (int i = 0; i < ((kes.Length - 1) / 2); i += 2)
+                        {
+                            if (kes[i].Trim() != "")
+                            {
+                                ps.ProductId = pro.Id;
+                                ps.SpeCaption = kes[i];
+                                ps.SpeDescription = kes[i + 1];
+                                _productSpesificationBll.Add(ps);
+                            }
+                        }
                     }
+
+                    return Json("success", JsonRequestBehavior.AllowGet);
                 }
 
-                return RedirectToAction("AddProductPicture",proId);
+                return Json("error", JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
             {
@@ -294,16 +282,77 @@ namespace ETicaret.MVCUI.Controllers
             }
         }
 
-        public ActionResult AddProductPicture()
-        {
-            return View();
 
-        }
-        [HttpPost]
-        public ActionResult AddProductPicture(int id,HttpPostedFileBase picture)
+        public ActionResult AddProductPicture(int id)
         {
-            Product pro=_productBll.GetOne(x => x.Id == id);
-            return RedirectToAction("Detay", new {id = pro.Id});
+            Product pro = _productBll.GetOne(x => x.Id == id);
+            return View(pro);
+        }
+
+        [HttpPost]
+        public ActionResult AddProductPicture(int id, List<HttpPostedFileBase> file)
+        {
+            IProductPictureBll _productPictureBll = new ProductPictureBll(new ProductPictureDal());
+            string uploadPath = ConfigurationManager.AppSettings["UploadPath"];
+            string uploadMapPath = Server.MapPath(uploadPath);
+            if (Directory.Exists(uploadMapPath) == false)
+            {
+                Directory.CreateDirectory(uploadMapPath);
+            }
+
+            string coverPicPath = ConfigurationManager.AppSettings["CoverUploadPath"];
+            string coverMapPath = Server.MapPath(coverPicPath);
+
+            if (Directory.Exists(coverMapPath) == false)
+            {
+                Directory.CreateDirectory(coverMapPath);
+            }
+
+            string ThumpPath = ConfigurationManager.AppSettings["ThumpNailUploadPath"];
+            string ThumpMapPath = Server.MapPath(ThumpPath);
+            if (Directory.Exists(ThumpMapPath) == false)
+            {
+                Directory.CreateDirectory(ThumpMapPath);
+            }
+            
+            string ThumpExtention = file[0].ContentType.Split('/')[1];//ilk resmi Thumpnail yapmak için 0'ıncı indexi aldım.
+            string ThumpfileName = "f-" + id + "-" + Guid.NewGuid() + "." + ThumpExtention;
+            string ThumpFullFileUrl = ThumpMapPath + "/" + ThumpfileName;
+            string ForDbFullFileUrlThumpnail = ThumpPath + "/" + ThumpfileName;
+            Image orjThumpImage = Image.FromStream(file[0].InputStream);
+            Bitmap ThumpNail = new Bitmap(orjThumpImage, 255, 271);
+            ThumpNail.Save(ThumpFullFileUrl);
+            Product product = _productBll.GetOne(x => x.Id == id);
+            if (product != null)
+            {
+                string replaceLanda = ForDbFullFileUrlThumpnail.Replace("~", "..");
+                product.ThumpNailPicture = replaceLanda;
+                _productBll.Update(product);
+            }
+
+            foreach (HttpPostedFileBase httpPostedFileBase in file)
+            {
+                string ext = httpPostedFileBase.ContentType.Split('/')[1];
+                string fileName = "f-" + id + "-" + Guid.NewGuid() + "." + ext;
+                string forDbFullFileUrlForCoverPic = coverPicPath + "/" + fileName;
+                string CoverFullFileName = coverMapPath + "/" + fileName;
+                Image orjImage = Image.FromStream(httpPostedFileBase.InputStream);
+                Bitmap CoverPic = new Bitmap(orjImage, 540, 584);
+                CoverPic.Save(CoverFullFileName);
+                ProductPicture pp = new ProductPicture();
+                string replaceLanda = forDbFullFileUrlForCoverPic.Replace("~", "../..");
+                pp.PicPath = replaceLanda;
+                if (product!=null)
+                {
+                    pp.ProductID = product.Id;
+                    _productPictureBll.Add(pp);
+                }
+               
+               
+            }
+            //file.SaveAs(fullFileName);
+            return RedirectToAction("AddProduct");
+
         }
     }
 }

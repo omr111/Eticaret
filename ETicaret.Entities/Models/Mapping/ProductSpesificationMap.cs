@@ -12,9 +12,11 @@ namespace ETicaret.Entities.Models.Mapping
 
             // Properties
             this.Property(t => t.SpeCaption)
+                .IsRequired()
                 .HasMaxLength(50);
 
             this.Property(t => t.SpeDescription)
+                .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
@@ -25,7 +27,7 @@ namespace ETicaret.Entities.Models.Mapping
             this.Property(t => t.SpeDescription).HasColumnName("SpeDescription");
 
             // Relationships
-            this.HasOptional(t => t.Product)
+            this.HasRequired(t => t.Product)
                 .WithMany(t => t.ProductSpesifications)
                 .HasForeignKey(d => d.ProductId);
 
